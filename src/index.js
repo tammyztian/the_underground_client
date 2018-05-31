@@ -1,5 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
+// import {BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
@@ -7,7 +8,9 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 
 const user = 
-  { name: 'Tammy',
+  { username: 'user1',
+    password: 'user1',
+    name: 'Tammy',
     weight: '115',
     height: "5'4",
     lifts:{
@@ -19,8 +22,9 @@ const user =
 
 
 ReactDOM.render(
-<Provider store={store}>
-  <App user={user} />
-  </Provider>, 
+  <Provider store={store}>
+
+        <App user={user} />
+    </Provider>, 
   document.getElementById('root'));
 registerServiceWorker();

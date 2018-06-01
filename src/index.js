@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-// import {BrowserRouter as Router } from 'react-router-dom';
+//import {BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
@@ -23,7 +23,7 @@ const user =
 
 ReactDOM.render(
   <Provider store={store}>
-
+    
         <App user={user} />
     </Provider>, 
   document.getElementById('root'));

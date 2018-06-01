@@ -1,37 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
-//import { withRouter } from 'react-router-dom';
-
-
-import {getLifts} from '../actions/lifts'
 
 class Lifts extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(
-      getLifts(this.props.match.params.lifts)
-    )
+  submit = values => {
+    console.log(values);
   }
+
 
   render() {
   
       return (
         <div className="lifts-container">
-              <h1>Here are your current lift records</h1>
+              <h1>Here are your entered records</h1>
             <div className='lifts'>
-              {this.props.post.bench}
-              {this.props.post.squat}
-              {this.props.post.deadlift}
-              {this.props.lifts.createdAt}
+              <ul> 
+                <li> {this.props.bench} </li>
+                <li>{this.props.squat} </li>
+                <li> {this.props.deadlift}</li>
+              </ul>
           </div>
         </div>
       )
     }
+  }
   
-}
 
 const mapStateToProps = state => ({
-  lift: state.lifts,
-  
+  data: state.lifts,
+  bench: state.lifts.bench,
+  squat: state.lifts.squat,
+  deadlift: state.lifts.deadlift
 })
 
 export default connect(mapStateToProps)(Lifts)

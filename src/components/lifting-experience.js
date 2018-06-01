@@ -1,8 +1,8 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import Input from './input';
-import Dashboard from '../components/Dashboard';
-import { postLifts } from '../actions/lifts';
+import Dashboard from './Dashboard';
+import {postLifts}  from '../actions/lifts';
 
 export class WeightForm extends React.Component{
   constructor(props) {
@@ -13,14 +13,12 @@ export class WeightForm extends React.Component{
     }
   }
 
-    onSubmit(values){
-      const {bench, squat, deadlift} = values;
-      const lifts = {bench, squat, deadlift};
+    onSubmit(lifts){
+      console.log(lifts);
       return this.props 
         .dispatch(postLifts(lifts))
-        .then(lifts => console.log(lifts)
-        .then(this.setState({success:true}))
-    );
+        //.then(lifts => console.log(lifts))
+        .then(this.setState({success:true}));
   }
   
 
@@ -31,21 +29,21 @@ export class WeightForm extends React.Component{
     if (this.state.success) return <Dashboard />
     return(
       <form
-        className="login-form"
+        className="lifts-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
         <label htmlFor="lifts-bench"> Bench </label>
-        <Field component={Input} type="text" name="lifts.bench" />
+        <Field component={Input} type="text" name="bench" />
         <label htmlFor="lifts-squat"> Squat </label>
-        <Field component={Input} type="text" name="lifts.squat" />
+        <Field component={Input} type="text" name="squat" />
         <label htmlFor="lifts-deadlift"> Deadlift </label>
-        <Field component={Input} type="text" name="lifts.deadlift" />
+        <Field component={Input} type="text" name="deadlift" />
        
         
         <button 
           type="submit"
           disabled={this.props.pristine || this.props.submitting}>
-          Register
+          Submit
         </button>
       </form>
     )
@@ -53,7 +51,5 @@ export class WeightForm extends React.Component{
 }
 
 export default reduxForm({
-  form: 'registration',
-  onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('registration', Object.keys(errors)[0]))
+  form: 'weightform',
 })(WeightForm);

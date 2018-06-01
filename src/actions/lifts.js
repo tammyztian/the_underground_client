@@ -1,5 +1,5 @@
 import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
+//import {normalizeResponseErrors} from './utils';
 
 export const GET_LIFTS_REQUEST = 'GET_LIFTS_REQUEST'
 export const getLiftsRequest = () => ({
@@ -21,35 +21,34 @@ export const postLiftsRequest = () => ({
   type: POST_LIFTS_REQUEST
 })
 
-export const POST_LIFT_SUCCCESS = 'POST_LIFTS_REQUEST'
-export const postLiftsSuccess = () => ({
-  type: POST_LIFT_SUCCCESS
+export const POST_LIFTS_SUCCESS = 'POST_LIFTS_SUCCESS'
+export const postLiftsSuccess = lifts=> ({
+  type: POST_LIFTS_SUCCESS,
+  bench: lifts.bench,
+  squat: lifts.squat,
+  deadlift: lifts.deadlift
 })
 
-export const POST_LIFT_ERROR = 'POST_LIFTS_ERROR'
-export const postLiftsError = () => ({
-  type: POST_LIFT_ERROR
+export const POST_LIFTS_ERROR = 'POST_LIFTS_ERROR'
+export const postLiftsError = error => ({
+  type: POST_LIFTS_ERROR,
+  error
 })
 
-export const getLifts = lifts => dispatch => {
-  dispatch(getLiftsRequest())
+export const getLifts = () => dispatch => {
   fetch(`${API_BASE_URL}/lifts`)
-    .then(res => normalizeResponseErrors(res))
     .then(res => {
-      if (res.status === 200) {
-        return res.json()
-      } else {
-        dispatch(getLiftsError(res.statusText))
-      }
+      return res.json();
     })
-    .then(lifts => dispatch(getLiftsSuccess(lifts)))
-    .catch(err => dispatch(postLiftsError(err)))
+      .then(dispatch(getLiftsSuccess()))
+      .catch((err) => dispatch(getLiftsError(err)))
+
 
 }
 
 export const postLifts = lifts => dispatch => {
   dispatch(postLiftsRequest())
-  console.log('fetch request to post lift sent!');
+  console.log('POST request to post lift sent!');
   return fetch(`${API_BASE_URL}/lifts`, {
     method: 'POST',
     headers: {
@@ -57,12 +56,15 @@ export const postLifts = lifts => dispatch => {
     },
     body:JSON.stringify(lifts)
   })
-    .then(res => normalizeResponseErrors(res))
     .then(res => {
-      if (res.status === 201) dispatch(postLiftsSuccess)
-      else return res.json()
+     return res.json()
+    }) 
+    .then(data => {
+      console.log(data)
+      return dispatch(postLiftsSuccess(data))
     })
-    .then(err => dispatch(postLiftsError(err)))
+      // .then(()=>
+      //   return dispatch(getLifts(lifts));)
     .catch(err => dispatch(postLiftsError(err)))
       // const {reason, message, location} = err;
       // if (reason === 'ValidationError'){

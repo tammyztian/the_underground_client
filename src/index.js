@@ -1,30 +1,18 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-//import {BrowserRouter as Router } from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 
-const user = 
-  { username: 'user1',
-    password: 'user1',
-    name: 'Tammy',
-    weight: '115',
-    height: "5'4",
-    lifts:{
-      bench: 80,
-      deadlift: 225,
-      squat: 165
-    }
-};
-
 
 ReactDOM.render(
   <Provider store={store}>
-    
-        <App user={user} />
+      <BrowserRouter>
+        <App  />
+      </BrowserRouter>
     </Provider>, 
   document.getElementById('root'));
 registerServiceWorker();

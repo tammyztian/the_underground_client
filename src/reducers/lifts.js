@@ -3,9 +3,9 @@ import {
 } from '../actions/lifts';
 
 const initialState = {
-  bench: 45,
-  squat: 45,
-  deadlift: 45,
+  bench: null,
+  squat: null,
+  deadlift: null,
   loading: false,
   error: null,
   success: false,

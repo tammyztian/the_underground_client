@@ -8,7 +8,9 @@ class Lifts extends React.Component {
 
 
   render() {
-  
+    if (this.props.loading){
+      return <p> Loading </p>
+    }
       return (
         <div className="lifts-container">
               <h1>Here are your entered records</h1>
@@ -29,7 +31,8 @@ const mapStateToProps = state => ({
   data: state.lifts,
   bench: state.lifts.bench,
   squat: state.lifts.squat,
-  deadlift: state.lifts.deadlift
+  deadlift: state.lifts.deadlift,
+  loading: state.lifts.loading
 })
 
 export default connect(mapStateToProps)(Lifts)

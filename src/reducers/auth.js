@@ -20,10 +20,13 @@ export const authReducer = (state = initialState, action) => {
       
   } else if (action.type === CLEAR_AUTH) {
       return {...state, authToken: null, currentUser: null}
-  } else if (action.type === AUTH_REQUEST) {
+
+    } else if (action.type === AUTH_REQUEST) {
       return {...state, loading: true, error: null }
+
   } else if (action.type === AUTH_SUCCESS) {
-      return {...state, loading: false, currentUser: action.currentUser};
+      return {...state, loading: false, currentUser: action.currentUser, success: true};
+
   } else if (action.type === AUTH_ERROR) {
       return {...state, loading: false, error: action.error};
   }

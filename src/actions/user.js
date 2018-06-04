@@ -4,7 +4,7 @@ import {API_BASE_URL} from '../config';
 
 export const registerUser = user => (dispatch) => {
   console.log('register user POST ran');
-  return fetch(`${API_BASE_URL}/users`, {
+  return fetch(`${API_BASE_URL}/user`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'

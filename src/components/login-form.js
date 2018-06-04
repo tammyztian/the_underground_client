@@ -1,10 +1,27 @@
 import React from 'react';
-import{Field, reduxForm} from 'redux-form';
+import{Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
+import Dashboard from './Dashboard';
+
+import {login} from '../actions/auth';
+import WeightForm from './lifting-experience';
 
 export class LoginForm extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      success: false,
+      error: null
+    }
+  }
+
+  
+
   onSubmit(values){
-    return this.props.dispatch(login(values.username, values.password));
+    return this.props
+      .dispatch(login(values.username, values.password))
+      .then(this.setState({success: true}));
   }
 
   render() {
@@ -16,6 +33,9 @@ export class LoginForm extends React.Component {
         </div>
       );
     }
+
+    if (this.state.success) 
+      return <WeightForm />
 
       return (
         <form 
@@ -34,9 +54,9 @@ export class LoginForm extends React.Component {
           <label htmlFor="password"> Password </label>
           <Field
             component={Input}
-            type="text"
-            name="username"
-            id="username"
+            type="password"
+            name="password"
+            id="password"
           />
           <button disabled={this.props.pristine || this.props.submitting}>
             Log in
@@ -48,5 +68,7 @@ export class LoginForm extends React.Component {
 
 export default reduxForm({
   form: 'loginForm',
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 
-})(loginForm);
+
+})(LoginForm)

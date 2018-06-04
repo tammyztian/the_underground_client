@@ -46,13 +46,15 @@ export const getLifts = () => dispatch => {
 
 }
 
-export const postLifts = lifts => dispatch => {
+export const postLifts = lifts => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
   dispatch(postLiftsRequest())
   console.log('POST request to post lift sent!');
   return fetch(`${API_BASE_URL}/lifts`, {
     method: 'POST',
     headers: {
-      'Content-Type':'application/json'
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${authToken}`
     },
     body:JSON.stringify(lifts)
   })

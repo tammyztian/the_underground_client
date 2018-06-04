@@ -1,13 +1,13 @@
 import React from 'react';
 import Lifts from './lifts';
-import CalculatedProgram from './CalculatedProgram';
+import BenchDay1 from './IronSummerProgram/week1Bench';
 
 
 export default function Dashboard (){
     return (
           <div>
               <Lifts />
-              <CalculatedProgram />
+              <BenchDay1 />
               
           </div>
       );

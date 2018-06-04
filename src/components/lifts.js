@@ -16,9 +16,9 @@ class Lifts extends React.Component {
               <h1>Here are your entered records</h1>
             <div className='lifts'>
               <ul> 
-                <li> {this.props.bench} </li>
-                <li>{this.props.squat} </li>
-                <li> {this.props.deadlift}</li>
+                <li> Bench {this.props.bench} </li>
+                <li> Squat {this.props.squat} </li>
+                <li> Deadlift {this.props.deadlift}</li>
               </ul>
           </div>
         </div>
@@ -28,11 +28,13 @@ class Lifts extends React.Component {
   
 
 const mapStateToProps = state => ({
-  data: state.lifts,
+  authToken: state.auth.authToken, 
+  user: state.auth.curretUser,
   bench: state.lifts.bench,
   squat: state.lifts.squat,
   deadlift: state.lifts.deadlift,
   loading: state.lifts.loading
+
 })
 
 export default connect(mapStateToProps)(Lifts)

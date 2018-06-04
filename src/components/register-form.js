@@ -2,7 +2,7 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {registerUser} from '../actions/user';
 import Input from './input';
-import WeightForm from './lifting-experience';
+import LoginForm from './login-form';
 
 export class RegistrationForm extends React.Component{
   constructor(props) {
@@ -28,7 +28,7 @@ export class RegistrationForm extends React.Component{
   
   render(){
     if (this.state.success) {
-      return <WeightForm />
+      return <LoginForm />
     } else {
       return(
         <form

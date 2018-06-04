@@ -4,7 +4,12 @@ import Input from './input';
 import Dashboard from './Dashboard';
 import {postLifts}  from '../actions/lifts';
 
+
 export class WeightForm extends React.Component{
+  componentDidUpdate() {
+    this.setState({success:false});
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -53,3 +58,4 @@ export class WeightForm extends React.Component{
 export default reduxForm({
   form: 'weightform',
 })(WeightForm);
+

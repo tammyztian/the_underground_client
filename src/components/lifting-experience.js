@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import Input from './input';
 import Dashboard from './Dashboard';
@@ -6,32 +7,18 @@ import {postLifts}  from '../actions/lifts';
 
 
 export class WeightForm extends React.Component{
-  componentDidUpdate() {
-    this.setState({success:false});
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      success: false,
-      error: null
-    }
-  }
-
+  
     onSubmit(lifts){
       console.log(lifts);
       return this.props 
         .dispatch(postLifts(lifts))
-        //.then(lifts => console.log(lifts))
-        .then(this.setState({success:true}));
+     
   }
   
 
-
-  
   render(){
     if (!this.props.dispatch) return <h1>UNCONNECTED</h1>
-    if (this.state.success) return <Dashboard />
+    if (this.props.success) return <Dashboard />
     return(
       <form
         className="lifts-form"
@@ -54,6 +41,23 @@ export class WeightForm extends React.Component{
     )
   }
 }
+
+
+const mapStateToProps = state => ({
+  authToken: state.auth.authToken, 
+  user: state.auth.curretUser,
+  loading: state.lifts.loading,
+  error: state.lifts.error,
+  success: state.lifts.success,
+  bench: state.lifts.bench,
+  squat: state.lifts.squat,
+  deadlift: state.lifts.deadlift,
+  loading: state.lifts.loading
+})
+
+WeightForm = connect(
+  mapStateToProps
+)(WeightForm)
 
 export default reduxForm({
   form: 'weightform',

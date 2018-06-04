@@ -6,6 +6,7 @@ import LandingPage from './landing-page';
 import Dashboard from './Dashboard';
 import RegistrationForm from './register-form';
 import {refreshAuthToken,  clearAuth } from '../actions/auth';
+import WeightForm from './lifting-experience';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -28,7 +29,7 @@ export class App extends React.Component {
 
     userTimeOut(){
         this.userTimeOut = setInterval(() => this.props.dispatch(clearAuth()),
-               3000// 5min
+           24 * 6 * 60 * 10 * 1000 // 1 day
         );   
     }
 
@@ -47,7 +48,7 @@ export class App extends React.Component {
     startPeriodicRefresh() {
         this.refreshInterval = setInterval(
             () => this.props.dispatch(refreshAuthToken()),
-            60 * 10 * 1000 // 10min
+            6 * 60 * 10 * 1000 // 60min
         );
     }
 
@@ -64,6 +65,8 @@ export class App extends React.Component {
             <div className="app">
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/lifts" component={WeightForm} />
+
                 <Route exact path="/register" component={RegistrationForm} />
             </div>
         );

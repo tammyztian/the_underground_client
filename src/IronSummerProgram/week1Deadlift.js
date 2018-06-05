@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import putDay from ''
+import {updateProgramRecord} from '../actions/program'
 
 
 class DeadliftDay1 extends React.Component {
@@ -8,7 +8,7 @@ class DeadliftDay1 extends React.Component {
   onClick() {
    let nextDay = this.props.day + 1;
    return this.props
-    dispatchEvent(putDay(nextDay))
+    dispatch(updateProgramRecord(nextDay))
   }
  
   render() {
@@ -42,6 +42,10 @@ class DeadliftDay1 extends React.Component {
               <h3> Feelin' good? </h3>
               {optionalWorkout}
               <button 
+                type="button" 
+                className="completed-button"
+                onClick={this.onClick}
+              > Completed </button>
         </div>
       )
     }
@@ -49,7 +53,10 @@ class DeadliftDay1 extends React.Component {
   
 
 const mapStateToProps = state => ({
-
+  authToken: state.auth.authToken, 
+  user: state.auth.curretUser,
+  program: state.program.program,
+  day: state.program.day,
   deadlift: state.lifts.deadlift,
   loading: state.lifts.loading
 })

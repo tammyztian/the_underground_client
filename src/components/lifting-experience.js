@@ -21,7 +21,7 @@ export class WeightForm extends React.Component{
   render(){
     if (!this.props.dispatch) return <h1>UNCONNECTED</h1>
 
-    if (!this.props.auth) return <Redirect to="/" />;
+    if (!this.props.authToken) return <Redirect to="/" />;
 
     if (this.props.success) return <Redirect to="/dashboard" />;
     return(
@@ -51,13 +51,17 @@ export class WeightForm extends React.Component{
 const mapStateToProps = state => ({
   authToken: state.auth.authToken, 
   user: state.auth.curretUser,
+
+  program: state.program.program,
+  day: state.program.day,
+
   loading: state.lifts.loading,
   error: state.lifts.error,
   success: state.lifts.success,
+
   bench: state.lifts.bench,
   squat: state.lifts.squat,
   deadlift: state.lifts.deadlift,
-  loading: state.lifts.loading
 })
 
 WeightForm = connect(

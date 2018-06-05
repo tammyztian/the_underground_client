@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import Input from './input';
 import Dashboard from './Dashboard';
 import {postLifts}  from '../actions/lifts';
+import { LoginForm } from './login-form';
 
 
 export class WeightForm extends React.Component{
@@ -18,7 +20,10 @@ export class WeightForm extends React.Component{
 
   render(){
     if (!this.props.dispatch) return <h1>UNCONNECTED</h1>
-    if (this.props.success) return <Dashboard />
+
+    if (!this.props.auth) return <Redirect to="/" />;
+
+    if (this.props.success) return <Redirect to="/dashboard" />;
     return(
       <form
         className="lifts-form"

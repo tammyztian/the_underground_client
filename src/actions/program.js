@@ -24,9 +24,9 @@ export const putProgramRequest = () => ({
 })
 
 export const PUT_PROGRAM_SUCCESS = 'PUT_PROGRAM_SUCCESS'
-export const putProgramSuccess = program => ({
+export const putProgramSuccess = day => ({
   type: PUT_PROGRAM_SUCCESS,
-  program: program.day
+  day: day
 })
 
 export const PUT_PROGRAM_ERROR = 'PUT_PROGRAM_ERROR'
@@ -35,8 +35,8 @@ export const putProgramError = error => ({
   error
 })
 
-export const getProgramRecord = () => dispatch => {
-  fetch(`${API_BASE_URL}/PROGRAM`)
+export const getProgram = () => dispatch => {
+  fetch(`${API_BASE_URL}/program`)
     .then(res => {
       return res.json();
     })
@@ -48,25 +48,27 @@ export const getProgramRecord = () => dispatch => {
 
 
 
-
-
-export const updateProgramRecord = program => (dispatch, getState) => {
+export const updateProgramRecord = day => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(putProgramRequest())
   console.log('PUT request to post PROGRAM sent!');
+  console.log(day)
+  const bodyRequest = {day}
   return fetch(`${API_BASE_URL}/program`, {
     method: 'PUT',
     headers: {
       'Content-Type':'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body:JSON.stringify(program)
+    body:JSON.stringify(bodyRequest)
+
+
   })
     .then(res => {
      return res.json()
     }) 
     .then(data => {
-      console.log(data)
+      console.log(`this is input into program success ${data}`)
       return dispatch(putProgramSuccess(data))
     })
       // .then(()=>

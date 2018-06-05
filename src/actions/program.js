@@ -1,0 +1,83 @@
+import {API_BASE_URL} from '../config';
+//import {normalizeResponseErrors} from './utils';
+
+export const GET_PROGRAM_REQUEST = 'GET_PROGRAM_REQUEST'
+export const getProgramRequest = () => ({
+  type: GET_PROGRAM_REQUEST
+})
+
+export const GET_PROGRAM_ERROR = 'GET_PROGRAM_ERROR'
+export const getProgramError = () => ({
+  type: GET_PROGRAM_ERROR
+})
+
+export const GET_PROGRAM_SUCCESS = 'GET_PROGRAM_SUCCESS'
+export const getProgramSuccess = () => ({
+  type: GET_PROGRAM_SUCCESS
+})
+
+export const PUT_PROGRAM_REQUEST = 'PUT_PROGRAM_REQUEST'
+export const putProgramRequest = () => ({
+  type: PUT_PROGRAM_REQUEST,
+  //day: program.day,
+
+})
+
+export const PUT_PROGRAM_SUCCESS = 'PUT_PROGRAM_SUCCESS'
+export const putProgramSuccess = program => ({
+  type: PUT_PROGRAM_SUCCESS,
+  program: program.day
+})
+
+export const PUT_PROGRAM_ERROR = 'PUT_PROGRAM_ERROR'
+export const putProgramError = error => ({
+  type: PUT_PROGRAM_ERROR,
+  error
+})
+
+export const getProgramRecord = () => dispatch => {
+  fetch(`${API_BASE_URL}/PROGRAM`)
+    .then(res => {
+      return res.json();
+    })
+      .then(dispatch(getProgramSuccess()))
+      .catch((err) => dispatch(getProgramError(err)))
+
+
+}
+
+
+
+
+
+export const updateProgramRecord = program => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  dispatch(putProgramRequest())
+  console.log('PUT request to post PROGRAM sent!');
+  return fetch(`${API_BASE_URL}/program`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body:JSON.stringify(program)
+  })
+    .then(res => {
+     return res.json()
+    }) 
+    .then(data => {
+      console.log(data)
+      return dispatch(putProgramSuccess(data))
+    })
+      // .then(()=>
+      //   return dispatch(getLifts(lifts));)
+    .catch(err => dispatch(putProgramError(err)))
+      // const {reason, message, location} = err;
+      // if (reason === 'ValidationError'){
+      //   return Promise.reject(
+      //     new SubmissionError({
+      //       [location]:message
+      //     })
+      //   );
+      // }
+}

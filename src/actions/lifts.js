@@ -50,6 +50,7 @@ export const postLifts = lifts => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(postLiftsRequest())
   console.log('POST request to post lift sent!');
+  console.log(lifts);
   return fetch(`${API_BASE_URL}/lifts`, {
     method: 'POST',
     headers: {

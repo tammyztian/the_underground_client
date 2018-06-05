@@ -23,7 +23,7 @@ export class RegistrationForm extends React.Component{
         .then(this.setState({success: true}));
   }
   
-
+//automatically log in after registering
 
   
   render(){

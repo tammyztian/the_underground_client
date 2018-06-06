@@ -1,14 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {updateProgramRecord} from '../actions/program'
+import {updateProgramRecord} from '../actions/program';
+import {getProgram} from '../actions/program';
 
 
 class DeadliftDay1 extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(getProgram());
+  }
   
+
   onClick() {
    let nextDay = this.props.day + 1;
    return this.props
-    dispatch(updateProgramRecord(nextDay))
+    .dispatch(updateProgramRecord(nextDay))
   }
  
   render() {

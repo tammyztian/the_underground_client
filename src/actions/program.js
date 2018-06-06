@@ -12,8 +12,9 @@ export const getProgramError = () => ({
 })
 
 export const GET_PROGRAM_SUCCESS = 'GET_PROGRAM_SUCCESS'
-export const getProgramSuccess = () => ({
-  type: GET_PROGRAM_SUCCESS
+export const getProgramSuccess = day => ({
+  type: GET_PROGRAM_SUCCESS,
+  day
 })
 
 export const PUT_PROGRAM_REQUEST = 'PUT_PROGRAM_REQUEST'
@@ -35,12 +36,26 @@ export const putProgramError = error => ({
   error
 })
 
-export const getProgram = () => dispatch => {
-  fetch(`${API_BASE_URL}/program`)
+export const getProgram = () =>(dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  let day;
+  dispatch(getProgramRequest())
+  return fetch(`${API_BASE_URL}/program`,{
+    method: 'GET',
+    headers: {
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+  })
     .then(res => {
-      return res.json();
+      console.log(`number in db ${res}`)
+      return res.json()
     })
-      .then(dispatch(getProgramSuccess()))
+      .then (data => {
+        day = data.day
+        console.log(`data.day is ${day} being sent to state`) 
+      return (dispatch(getProgramSuccess(day)))
+    })
       .catch((err) => dispatch(getProgramError(err)))
 
 

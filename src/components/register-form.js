@@ -3,6 +3,8 @@ import {Field, reduxForm} from 'redux-form';
 import {registerUser} from '../actions/user';
 import Input from './input';
 import LoginForm from './login-form';
+import '../styles/form.css';
+
 
 export class RegistrationForm extends React.Component{
   constructor(props) {
@@ -46,6 +48,7 @@ export class RegistrationForm extends React.Component{
           
           <button 
             type="submit"
+            className="button"
             disabled={this.props.pristine || this.props.submitting}>
             Register
           </button>

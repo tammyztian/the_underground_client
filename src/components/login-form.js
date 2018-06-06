@@ -8,6 +8,8 @@ import Dashboard from './Dashboard';
 import {login} from '../actions/auth';
 import WeightForm from './lifting-experience';
 
+import '../styles/form.css';
+
 export class LoginForm extends React.Component {
 
   onSubmit(values){
@@ -34,7 +36,7 @@ export class LoginForm extends React.Component {
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values)
           )}>
-          
+
           {error}
           <label htmlFor="username"> Username </label>
           <Field
@@ -50,7 +52,7 @@ export class LoginForm extends React.Component {
             name="password"
             id="password"
           />
-          <button disabled={this.props.pristine || this.props.submitting}>
+          <button className="button" disabled={this.props.pristine || this.props.submitting}>
             Log in
           </button>
         </form>

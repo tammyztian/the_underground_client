@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import LoginForm from './login-form';
-
+import Header from './header';
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
     if (props.loggedIn) {
@@ -11,8 +11,8 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home">
-            <h2>Welcome to the Underground</h2>
+        <div className="containter-fluid landing-page">
+            <Header />
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>

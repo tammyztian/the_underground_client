@@ -1,0 +1,11 @@
+.button {
+	color: #fff;
+	background-color: transparent;
+	border-color: white;
+	margin-bottom: 5px;
+}
+.button:hover {
+	color: darkorange;
+	background-color: white;
+	border-color: white;
+}

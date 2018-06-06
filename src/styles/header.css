@@ -1,0 +1,9 @@
+.jumbotron {
+	background: orange;
+	color: white;
+	text-align: center;
+}
+.jumbotron p {
+	color: white;
+	font-size: 26px;
+}

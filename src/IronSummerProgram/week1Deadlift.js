@@ -25,7 +25,7 @@ class DeadliftDay1 extends React.Component {
     let rpe6Squat_3x6 = this.props.deadlift * .67;
 
     const requiredWorkout = 
-      <ul> 
+      <ul className="required-list"> 
         <li> Competition deadlift work up to Heavy 1x3 @ {rpeHeavy.toFixed()}</li>
         <li> Banded deadlift 3x3 @ {rpeSquat_3x5.toFixed()} </li>
         <li> Bent over rows for 3x5 @ {rpeSquat_3x5.toFixed()}</li>
@@ -33,14 +33,14 @@ class DeadliftDay1 extends React.Component {
                
       </ul>
   const optionalWorkout = 
-      <ul> 
+      <ul className="extra-list"> 
         <li> Dumbell Rows for 3x6 @  your choice of heavy weights</li>
         <li> Barbell curls for 4x8 @ your choice of heavy weights</li>
         <li> Dumbell Hammer curls 3x8 @ your choice of heavvy weights </li>
       </ul>
   
       return (
-        <div className="lifts-container">
+        <div className="program-container">
               <h2>Today's Workout: Deadlift Day</h2>
               <h3>Let's get in </h3>
               {requiredWorkout}
@@ -49,7 +49,7 @@ class DeadliftDay1 extends React.Component {
               <button 
                 type="button" 
                 className="completed-button"
-                onClick={this.onClick}
+                onClick={this.onClick.bind(this)}
               > Completed </button>
         </div>
       )

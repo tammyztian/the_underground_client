@@ -26,7 +26,7 @@ class SquatDay1 extends React.Component {
     let rpe6Squat_3x6 = this.props.squat * .67;
 
     const requiredWorkout = 
-      <ul> 
+      <ul className="required-list"> 
         <li> Competition Paused Squat for 1x3 @ {rpeHeavy.toFixed()}</li>
         <li> Specialty Squat Bar for 3x5 @ {rpeSquat_3x5.toFixed()} </li>
         <li> Box Squat for 3x5 @ {rpeSquat_3x5.toFixed()}</li>
@@ -34,14 +34,14 @@ class SquatDay1 extends React.Component {
                
       </ul>
   const optionalWorkout = 
-      <ul> 
+    <ul className="extra-list"> 
         <li> Dumbell Lunges for 3x8 @  your choice of Light weights</li>
         <li> Front Squat for 3x6 @ </li>
         <li> GHD Ham Raises 3x5 </li>
       </ul>
   
       return (
-        <div className="lifts-container">
+        <div className="program-container">
               <h2>Today's Workout: Squat Day</h2>
               <h3>Let's get in </h3>
               {requiredWorkout}

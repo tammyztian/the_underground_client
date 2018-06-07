@@ -27,7 +27,7 @@ class BenchDay1 extends React.Component {
     //move to an object in server
 
     const requiredWorkout = 
-            <ul> 
+            <ul className="required-list"> 
                 <li> Competition Paused Bench Press work up to heavy 1x3 @ {rpeHeavy.toFixed()}</li>
                 <li> Specialty Bench Bar for 4x6 @ {rpeSquat_3x5.toFixed()} </li>
                 <li> Variety Bench Press 4x4 @ {rpeSquat_3x5.toFixed()}</li>
@@ -35,7 +35,7 @@ class BenchDay1 extends React.Component {
             </ul>
 
     const extraWorkout = 
-      <ul>
+      <ul className="extra-list">
           <li> Dumbell Lunges 3x8 @ your choice of light weights </li>
           <li> Tricept Pulldowns 3x8 @ Moderate </li>
           <li> Dips 4x8 </li>
@@ -43,7 +43,7 @@ class BenchDay1 extends React.Component {
 
   
       return (
-        <div className="lifts-container">
+        <div className="program-container">
               <h2>Today's Workout: Bench Day</h2>
               <h3> Let's get in </h3>
               {requiredWorkout}
@@ -52,7 +52,7 @@ class BenchDay1 extends React.Component {
               <button 
                 type="button" 
                 className="completed-button"
-                onClick={this.onClick}
+                onClick={this.onClick.bind(this)}
               > Completed </button>
         </div>
       )

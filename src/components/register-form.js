@@ -1,8 +1,13 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+
 import {registerUser} from '../actions/user';
+import {createProgramRecord} from '../actions/program';
+import {viewFormFalse} from '../actions/viewform';
+
 import Input from './input';
 import LoginForm from './login-form';
+
 import '../styles/form.css';
 
 
@@ -21,7 +26,7 @@ export class RegistrationForm extends React.Component{
       const user = {username, password, firstName, lastName};
       return this.props 
         .dispatch(registerUser(user))
-        .then(user => console.log(user))
+        .dispatch(createProgramRecord())
         .then(this.setState({success: true}));
   }
   

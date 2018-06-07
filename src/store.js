@@ -8,6 +8,7 @@ import {reducer as formReducer} from 'redux-form';
 import {liftReducer} from './reducers/lifts';
 import {authReducer} from './reducers/auth';
 import {programReducer} from './reducers/program';
+import {viewFormReducer} from './reducers/viewform';
 
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
@@ -18,6 +19,7 @@ const store = createStore(
       lifts: liftReducer,
       auth: authReducer,
       program: programReducer,
+      viewForm: viewFormReducer
      
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

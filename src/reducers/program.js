@@ -20,7 +20,7 @@ export const programReducer = (state = initialState, action) => {
     case PUT_PROGRAM_REQUEST:
       return { ...state,loading: true, error: null, success: false}
     case PUT_PROGRAM_SUCCESS:
-      return { ...state, loading: false, success: true }
+      return { ...state, day:action.day, loading: false, success: true }
     case PUT_PROGRAM_ERROR:
       return { ...state, loading: false, error: action.error }
 

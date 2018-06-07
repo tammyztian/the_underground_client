@@ -15,7 +15,12 @@ class Dashboard extends React.Component {
 
     render (){
         if (this.props.authToken === null) return <Redirect to="/" />;
-   
+
+        if (this.props.viewForm){
+            console.log('submit should redirect to lifts')
+            return <Redirect to="/lifts" />
+          }
+
         if (this.props.day === 0) 
             return <div className="dashboard">
             <Header />
@@ -53,7 +58,10 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => ({
     authToken: state.auth.authToken, 
     user: state.auth.curretUser,
-    program: state.program.program,
+    
+    viewForm: state.viewForm.viewForm,
+
+    submit: state.program.submit,
     day: state.program.day,
     squat: state.lifts.squat,
     loading: state.lifts.loading

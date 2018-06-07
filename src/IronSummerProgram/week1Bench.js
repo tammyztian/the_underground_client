@@ -44,7 +44,6 @@ class BenchDay1 extends React.Component {
   
       return (
         <div className="program-container">
-              <h2>Today's Workout: Bench Day</h2>
               <h3> Let's get in </h3>
               {requiredWorkout}
               <h3> Still got some in ya? </h3>

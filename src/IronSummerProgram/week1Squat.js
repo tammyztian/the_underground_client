@@ -42,7 +42,6 @@ class SquatDay1 extends React.Component {
   
       return (
         <div className="program-container">
-              <h2>Today's Workout: Squat Day</h2>
               <h3>Let's get in </h3>
               {requiredWorkout}
               <h3> If you gotta push yourself </h3>

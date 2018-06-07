@@ -1,0 +1,60 @@
+dashboard {
+  padding-top: 15px;
+  width: 75%;
+  text-align: Center;
+  font-size: 75%;
+  color: white;
+}
+
+h2{
+  font-size: 150%;
+  padding: 10px;
+  color:white;
+}
+
+h3{
+  font-size: 125%;
+  padding: 10px;
+}
+
+.lifts-container{
+  color: rgb(202, 112, 28);
+ 
+}
+
+.program-container{
+  color: white;
+  padding: 10px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul{
+  color: rgb(202, 112, 28);
+  display: block;
+
+
+}
+
+li {
+  display: block;
+}
+
+.completed-button{
+  padding: 20px;
+  font-size: 100%;
+  color: #fff;
+	font-family: 'Roboto Mono', monospace;
+	background-color: transparent;
+	border: 1px;
+	border-color: white;
+	margin-bottom: 5px;
+	border-radius: 4px;
+}
+
+.completed-button:hover {
+	color:rgb(202, 112, 28);
+	border: none;
+}
+

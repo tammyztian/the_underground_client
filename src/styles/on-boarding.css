@@ -12,11 +12,8 @@
    color:white;;
  }
 
- ul{
-  display: inline-flex
 
 
- }
  .bg-1 { 
    background-color: rgb(202, 112, 28); /* Green */
    color: #ffffff;

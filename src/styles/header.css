@@ -1,9 +1,25 @@
 .jumbotron {
-	background: orange;
+	/* background: rgb(202, 112, 28); */
 	color: white;
 	text-align: center;
+	height: 100px;
+	padding-top:10px;
+
 }
-.jumbotron p {
+
+.jumbotron img {
+	max-width: 90%;
+	max-height: 90%;
+
+}
+
+.jumbotron h1 {
 	color: white;
 	font-size: 26px;
+	text-align: center;
+}
+
+.jumbotron p {
+	color: white;
+
 }

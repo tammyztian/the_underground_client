@@ -1,0 +1,34 @@
+.onboarding-content-container{
+  padding-top: 15px;
+  width: 75%;
+  text-align: Center;
+	margin-left: auto;
+  margin-right: auto;
+  font-size: 75%;
+  display: inline-flex;
+ }
+ 
+ .intro{
+   color:white;;
+ }
+
+ ul{
+  display: inline-flex
+
+
+ }
+ .bg-1 { 
+   background-color: rgb(202, 112, 28); /* Green */
+   color: #ffffff;
+   width: 100%;
+ }
+ .bg-2 { 
+   background-color: #474e5d; /* Dark Blue */
+   color: #ffffff;
+   width: 100%;
+ }
+ .bg-3 { 
+   background-color: #ffffff; /* White */
+   color: #555555;
+   width: 100%;
+ }

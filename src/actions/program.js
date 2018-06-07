@@ -52,6 +52,7 @@ export const getProgram = () =>(dispatch, getState) => {
       return res.json()
     })
       .then (data => {
+        console.log(data);
         day = data.day
         console.log(`data.day is ${day} being sent to state`) 
       return (dispatch(getProgramSuccess(day)))
@@ -82,9 +83,11 @@ export const updateProgramRecord = day => (dispatch, getState) => {
     .then(res => {
      return res.json()
     }) 
+
     .then(data => {
+      console.log(data);
       console.log(`this is input into program success ${data}`)
-      return dispatch(putProgramSuccess(data))
+      return dispatch(putProgramSuccess(data.day))
     })
       // .then(()=>
       //   return dispatch(getLifts(lifts));)

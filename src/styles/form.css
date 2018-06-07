@@ -1,11 +1,77 @@
+.form  {
+	padding: 20px;
+	color: white;
+	width: 50%;
+	text-align: center;
+	margin-left: auto;
+  margin-right: auto;
+	/* align-items: center; Try changing this to center if you like it better! */
+}
+.form-input .input{
+	min-width: 135px; /* Needs to be set to longest label (to keep inputs in a straight vertical line) */
+	padding-right: 20px; /* This ensures a gap between label and input */
+}
+
+input{
+		border: none;
+    border-bottom: 1px solid #888;
+		background-color: transparent;
+		margin-bottom: 10px;
+}
+
+.button {
+	color: #fff;
+	font-family: 'Roboto Mono', monospace;
+	background-color: transparent;
+	border: 1px;
+	border-color: white;
+	margin-bottom: 5px;
+	border-radius: 4px;
+
+}
+.button:hover {
+	color:rgb(202, 112, 28);
+	border: none;
+}
+
+
+
+/* .login-form {
+	padding-top: 20px;
+
+} */
+
+/* input {
+	background-color: transparent; 
+	text-transform: uppercase; 
+	border-radius: 0; 
+	border: 2px solid #fff; 
+	color: #fff; 
+	height: 20px; 
+	} */
+	
+/* input:hover{
+	background-color: black;
+	
+}
+
+.form-input {
+	padding-top:5px;
+	padding-bottom: 5px;
+	color: white;
+	size: 15px;
+}
 .button {
 	color: #fff;
 	background-color: transparent;
+	border: 1px;
 	border-color: white;
 	margin-bottom: 5px;
+	border-radius: 4px;
+
 }
 .button:hover {
 	color: darkorange;
-	background-color: white;
-	border-color: white;
-}
+	background-color: #616161;
+	border: none;
+} */

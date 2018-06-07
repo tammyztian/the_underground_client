@@ -4,9 +4,10 @@ import {Route, withRouter} from 'react-router-dom';
 
 import LandingPage from './landing-page';
 import Dashboard from './Dashboard';
-import RegistrationForm from './register-form';
 import {refreshAuthToken,  clearAuth } from '../actions/auth';
 import WeightForm from './lifting-experience';
+import { OnBoarding } from './on-boarding';
+import { LiftingPrepContainer } from './lifting-prep-container';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -65,8 +66,8 @@ export class App extends React.Component {
             <div className="app">
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/lifts" component={WeightForm} />
-                <Route exact path="/register" component={RegistrationForm} />
+                <Route exact path="/lifts" component={LiftingPrepContainer} />
+                <Route exact path="/register" component={OnBoarding} />
             </div>
         );
     }

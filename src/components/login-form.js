@@ -17,12 +17,13 @@ export class LoginForm extends React.Component {
       .dispatch(login(values.username, values.password))
   }
 
+
   render() {
     let error;
-    if (this.props.error){
+    if (!this.props.error === null){
       error = (
         <div className="form-error" aria-live="polite">
-          {this.props.error}
+          {this.props.error.message}
         </div>
       );
     }
@@ -30,7 +31,7 @@ export class LoginForm extends React.Component {
     if (this.props.success) 
       return <WeightForm />
 
-      return (
+    return (
         <form 
           className="form"
           onSubmit={this.props.handleSubmit(values =>

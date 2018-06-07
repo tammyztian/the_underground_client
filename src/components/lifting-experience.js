@@ -20,30 +20,87 @@ export class WeightForm extends React.Component{
 
   render(){
     if (!this.props.dispatch) return <h1>UNCONNECTED</h1>
-
     if (!this.props.authToken) return <Redirect to="/" />;
-
     if (this.props.success) return <Redirect to="/dashboard" />;
-    return(
-      <form
-        className="lifts-form"
-        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-      >
-        <label htmlFor="lifts-bench"> Bench </label>
-        <Field component={Input} type="text" name="bench" />
-        <label htmlFor="lifts-squat"> Squat </label>
-        <Field component={Input} type="text" name="squat" />
-        <label htmlFor="lifts-deadlift"> Deadlift </label>
-        <Field component={Input} type="text" name="deadlift" />
+
+
+    if (this.props.day === 0 || 3 || 6){
+      return(
+        <form
+          className="form"
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        >
+          <label htmlFor="lifts-bench"> Bench </label>
+          <Field component={Input} type="text" name="bench" />
+        
+          <button 
+            type="submit"
+            className="button"
+            disabled={this.props.pristine || this.props.submitting}>
+            Submit
+          </button>
+        </form>
+      )}
+
+    if (this.props.day === 1 || 4 || 7){
+      return(
+        <form
+          className="form"
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        >
+         
+          <label htmlFor="lifts-squat"> Squat </label>
+          <Field component={Input} type="text" name="squat" />
+        
+          <button 
+            type="submit"
+            className="button"
+            disabled={this.props.pristine || this.props.submitting}>
+            Submit
+          </button>
+        </form>
+      )}
+
+    if (this.props.day === 2 || 5 || 8) {
+      return(
+        <form
+          className="form"
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        >
+          <label htmlFor="lifts-deadlift"> Deadlift </label>
+          <Field component={Input} type="text" name="deadlift" />
+        
+          <button 
+            type="submit"
+            className="button"
+            disabled={this.props.pristine || this.props.submitting}>
+            Submit
+          </button>
+        </form>
+      )}
+
+
+    // return(
+    //   <form
+    //     className="form"
+    //     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+    //   >
+    //     <label htmlFor="lifts-bench"> Bench </label>
+    //     <Field component={Input} type="text" name="bench" />
+    //     <label htmlFor="lifts-squat"> Squat </label>
+    //     <Field component={Input} type="text" name="squat" />
+    //     <label htmlFor="lifts-deadlift"> Deadlift </label>
+    //     <Field component={Input} type="text" name="deadlift" />
        
         
-        <button 
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}>
-          Submit
-        </button>
-      </form>
-    )
+    //     <button 
+    //       type="submit"
+    //       className="button"
+    //       disabled={this.props.pristine || this.props.submitting}>
+    //       Submit
+    //     </button>
+    //   </form>
+    // )
   }
 }
 

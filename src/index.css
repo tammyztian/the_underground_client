@@ -47,6 +47,7 @@ a:hover {
   color: rgb(202, 112, 28);
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
+  display: block;
 }
 

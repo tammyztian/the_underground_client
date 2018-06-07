@@ -3,6 +3,7 @@ import Lifts from './lifts';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
+import Header from './header';
 import SquatDay1 from '../IronSummerProgram/week1Squat';
 import BenchDay1 from '../IronSummerProgram/week1Bench';
 import DeadliftDay1 from '../IronSummerProgram/week1Deadlift';
@@ -16,24 +17,28 @@ class Dashboard extends React.Component {
    
         if (this.props.day === 0) 
             return <div className="dashboard">
+                    <Header />
                     <Lifts /> 
                     <SquatDay1 />
                 </div>
         
         if (this.props.day === 1) 
         return  <div className="dashboard">
+                <Header />
                 <Lifts /> 
                 <BenchDay1 />
             </div>
 
         if (this.props.day === 2) 
             return <div className="dashboard">
+                    <Header />
                     <Lifts /> 
                     <DeadliftDay1 />
                 </div>
 
         return (
             <div>
+                <Header />
                 <Lifts />
                 
             </div>

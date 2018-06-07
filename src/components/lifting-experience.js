@@ -23,15 +23,15 @@ export class WeightForm extends React.Component{
     if (!this.props.authToken) return <Redirect to="/" />;
     if (this.props.success) return <Redirect to="/dashboard" />;
 
-
     if (this.props.day === 0 || 3 || 6){
       return(
         <form
           className="form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-          <label htmlFor="lifts-bench"> Bench </label>
-          <Field component={Input} type="text" name="bench" />
+         
+          <label htmlFor="lifts-squat"> Squat </label>
+          <Field component={Input} type="text" name="squat" />
         
           <button 
             type="submit"
@@ -41,16 +41,15 @@ export class WeightForm extends React.Component{
           </button>
         </form>
       )}
-
-    if (this.props.day === 1 || 4 || 7){
+      
+    if (this.props.day === 1 || 4 || 7) {
       return(
         <form
           className="form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-         
-          <label htmlFor="lifts-squat"> Squat </label>
-          <Field component={Input} type="text" name="squat" />
+          <label htmlFor="lifts-bench"> Bench </label>
+          <Field component={Input} type="text" name="bench" />
         
           <button 
             type="submit"

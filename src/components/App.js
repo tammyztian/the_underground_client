@@ -41,15 +41,15 @@ export class App extends React.Component {
         clearInterval(this.userTimeOut);
     }
 
-    userTimeOutNotification(){
-        this.userTimeOutNotification = setInterval(() =>
-        alert('you will be logged off in one min'), 500)
-    }
+    // userTimeOutNotification(){
+    //     this.userTimeOutNotification = setInterval(() =>
+    //     alert('you will be logged off in one min'), 500)
+    // }
 
     startPeriodicRefresh() {
         this.refreshInterval = setInterval(
             () => this.props.dispatch(refreshAuthToken()),
-            6 * 60 * 10 * 1000 // 60min
+            60 * 10 * 1000 * 12 // 12 hours
         );
     }
 

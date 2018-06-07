@@ -1,7 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
+
 import {updateProgramRecord} from '../actions/program';
 import {getProgram} from '../actions/program';
+import {viewFormTrue} from '../actions/viewform';
 
 
 class SquatDay1 extends React.Component {
@@ -9,11 +12,10 @@ class SquatDay1 extends React.Component {
     this.props.dispatch(getProgram());
   }
   
-  onClick() {
-    console.log(this.props.day);
+  onClick(event) {
     let nextDay = this.props.day + 1;
-    return this.props
-     .dispatch(updateProgramRecord(nextDay))
+    this.props.dispatch(updateProgramRecord(nextDay))
+    this.props.dispatch(viewFormTrue());
    }
   
 
@@ -21,6 +23,12 @@ class SquatDay1 extends React.Component {
    if (this.props.loading) {
      return <p> Loading </p>
    }
+
+  //  if (this.props.submit){
+  //    console.log('should redirect to lifts')
+  //   return <Redirect to="/lifts" />
+    
+  // }
     let rpeHeavy = this.props.squat * .94;
     let rpeSquat_3x5 = this.props.squat * .73;
     let rpe6Squat_3x6 = this.props.squat * .67;
@@ -60,8 +68,12 @@ class SquatDay1 extends React.Component {
 const mapStateToProps = state => ({
   authToken: state.auth.authToken, 
   user: state.auth.curretUser,
+
+  viewForm: state.viewForm.viewForm,
+
   program: state.program.program,
   day: state.program.day,
+
   squat: state.lifts.squat,
   loading: state.lifts.loading
 })

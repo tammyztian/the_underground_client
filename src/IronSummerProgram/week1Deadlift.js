@@ -1,25 +1,41 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
+
 import {updateProgramRecord} from '../actions/program';
 import {getProgram} from '../actions/program';
+import {viewFormTrue} from '../actions/viewform';
+
 
 
 class DeadliftDay1 extends React.Component {
   componentDidMount() {
     this.props.dispatch(getProgram());
+    
   }
   
 
-  onClick() {
-   let nextDay = this.props.day + 1;
-   return this.props
-    .dispatch(updateProgramRecord(nextDay))
-  }
- 
+  onClick(event) {
+    let nextDay = this.props.day + 1;
+    if (nextDay > 2){
+      nextDay = 0;
+    }
+    console.log(nextDay);
+    this.props.dispatch(updateProgramRecord(nextDay))
+    this.props.dispatch(viewFormTrue());
+   }
+  
   render() {
    if (this.props.loading) {
      return <p> Loading </p>
    }
+
+
+
+  //  if (this.props.){
+  //   return <Redirect to="/lifts" />
+  // }
+
     let rpeHeavy = this.props.deadlift * .94;
     let rpeSquat_3x5 = this.props.deadlift* .73;
     let rpe6Squat_3x6 = this.props.deadlift * .67;
@@ -59,8 +75,12 @@ class DeadliftDay1 extends React.Component {
 const mapStateToProps = state => ({
   authToken: state.auth.authToken, 
   user: state.auth.curretUser,
+
+  viewForm: state.viewForm.viewForm,
+
   program: state.program.program,
   day: state.program.day,
+
   deadlift: state.lifts.deadlift,
   loading: state.lifts.loading
 })

@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import{Field, reduxForm, focus} from 'redux-form';
+import {Redirect} from 'react-router-dom';
+
 import Input from './input';
 import Dashboard from './Dashboard';
 
@@ -13,8 +14,7 @@ import '../styles/form.css';
 export class LoginForm extends React.Component {
 
   onSubmit(values){
-    return this.props
-      .dispatch(login(values.username, values.password))
+    this.props.dispatch(login(values.username, values.password))
   }
 
 
@@ -29,14 +29,12 @@ export class LoginForm extends React.Component {
     }
 
     if (this.props.success) 
-      return <WeightForm />
+      return <Redirect to="/lifts"/>
 
     return (
         <form 
           className="form"
-          onSubmit={this.props.handleSubmit(values =>
-            this.onSubmit(values)
-          )}>
+          onSubmit={this.props.handleSubmit(values =>this.onSubmit(values))}>
 
           {error}
           <label htmlFor="username" className="form-input"> Username </label>
@@ -67,6 +65,7 @@ export class LoginForm extends React.Component {
 const mapStateToProps = state => ({
   authToken: state.auth.authToken, 
   user: state.auth.curretUser,
+
   loading: state.auth.loading,
   error: state.auth.error,
   success: state.auth.success

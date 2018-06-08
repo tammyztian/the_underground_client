@@ -4,6 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 
 import LoginForm from './login-form';
 import Header from './header';
+import OnBoarding from './on-boarding';
 
 export class LandingPage extends React.Component {
     // If we are logged in redirect straight to the user's dashboard
@@ -14,9 +15,8 @@ export class LandingPage extends React.Component {
         }
     return (
         <div className="landing-page">
-            <Header />
-            <LoginForm />
-            <Link to="/register">Register</Link>
+            <OnBoarding />
+            <Link to="/login">Login</Link>
         </div>
     );
     }

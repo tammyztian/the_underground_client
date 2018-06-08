@@ -6,7 +6,8 @@ import LandingPage from './landing-page';
 import Dashboard from './Dashboard';
 import {refreshAuthToken,  clearAuth } from '../actions/auth';
 import WeightForm from './lifting-experience';
-import { OnBoarding } from './on-boarding';
+import {LoginPage} from './login-page';
+import OnBoarding from './on-boarding';
 import { LiftingPrepContainer } from './lifting-prep-container';
 
 export class App extends React.Component {
@@ -68,6 +69,7 @@ export class App extends React.Component {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/lifts" component={LiftingPrepContainer} />
                 <Route exact path="/register" component={OnBoarding} />
+                <Route exact path="/login" component={LoginPage} />
             </div>
         );
     }

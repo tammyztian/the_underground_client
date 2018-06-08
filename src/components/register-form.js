@@ -1,14 +1,16 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {Redirect} from 'react-router-dom';
 
 import {registerUser} from '../actions/user';
 import {createProgramRecord} from '../actions/program';
 import {viewFormFalse} from '../actions/viewform';
 
 import Input from './input';
-import LoginForm from './login-form';
-
+import {LoginPage} from './login-page';
 import '../styles/form.css';
+import { login } from '../actions/auth';
+import { LiftingPrepContainer } from './lifting-prep-container';
 
 
 export class RegistrationForm extends React.Component{
@@ -24,10 +26,16 @@ export class RegistrationForm extends React.Component{
     onSubmit(values){
       const {username, password, firstName, lastName} = values;
       const user = {username, password, firstName, lastName};
-      return this.props 
-        .dispatch(registerUser(user))
-        .dispatch(createProgramRecord())
-        .then(this.setState({success: true}));
+  
+      return this.props.dispatch(registerUser(user))
+      .then(console.log(user))
+      .then(() => {
+        return this.props.dispatch(login(values.username, values.password))
+      })
+      .then(() => {
+        this.props.dispatch(createProgramRecord())
+      })
+      .then(this.setState({success: true}))
   }
   
 //automatically log in after registering
@@ -35,7 +43,8 @@ export class RegistrationForm extends React.Component{
   
   render(){
     if (this.state.success) {
-      return <LoginForm />
+      return <Redirect to="/lifts"/>
+
     } else {
       return(
         <form

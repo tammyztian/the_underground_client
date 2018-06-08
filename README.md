@@ -1,4 +1,4 @@
-##The Underground
+## The Underground
 
 This app was built to accompany the [Iron Summer 2018](http://www.andienguyen.com/p/iron-summer-2018-program.html) powerlifting program created by Andie Nguyen.
 
@@ -13,13 +13,13 @@ User can create a user.
 User can log lifts for each day.
 User can receive workouts based on their daily lifts.
 
-![The Landing page prompts user to register](https://photos.app.goo.gl/J6oKLLurFsOQNxtv1)"Landing Page to register")
+![The Landing page prompts user to register](http://i68.tinypic.com/rml8v5.png)"Landing Page to register")
 
- ![This form collects the users max lift for the day](https://photos.app.goo.gl/cr0N6tgkWOx7Ln002)
+ ![This form collects the users max lift for the day](http://i65.tinypic.com/qx7uqt.png)
 "The lifting record form collects base number to calculate workout from"
 
 
-![This page displays the workout for the day](https://photos.app.goo.gl/WkkN1iiHBwAGis7F3)
+![This page displays the workout for the day](http://i64.tinypic.com/2j3gmf5.png)
 "This page displays the workout for the day"
 
 

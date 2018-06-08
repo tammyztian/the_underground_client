@@ -2,9 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
+
+import {refreshAuthToken,  clearAuth } from '../actions/auth';
+
+import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './Dashboard';
-import {refreshAuthToken,  clearAuth } from '../actions/auth';
 import WeightForm from './lifting-experience';
 import {LoginPage} from './login-page';
 import OnBoarding from './on-boarding';
@@ -15,12 +18,12 @@ export class App extends React.Component {
         if (!prevProps.loggedIn && this.props.loggedIn) {
             // When we are logged in, refresh the auth token periodically
             this.startPeriodicRefresh();
-            this.userTimeOut();
+            //this.userTimeOut();
             
             
         } else if (prevProps.loggedIn && !this.props.loggedIn) {
             // Stop refreshing when we log out
-            this.clearUserTimeOut();
+            //this.clearUserTimeOut();
             this.stopPeriodicRefresh();
         }
     }
@@ -29,18 +32,18 @@ export class App extends React.Component {
         this.stopPeriodicRefresh();
     }
 
-    userTimeOut(){
-        this.userTimeOut = setInterval(() => this.props.dispatch(clearAuth()),
-           24 * 6 * 60 * 10 * 1000 // 1 day
-        );   
-    }
+    // userTimeOut(){
+    //     this.userTimeOut = setInterval(() => this.props.dispatch(clearAuth()),
+    //        24 * 6 * 60 * 10 * 1000 // 1 day
+    //     );   
+    // }
 
-    clearUserTimeOut(){
-        if (!this.userTimeOut){
-            return;
-        }
-        clearInterval(this.userTimeOut);
-    }
+    // clearUserTimeOut(){
+    //     if (!this.userTimeOut){
+    //         return;
+    //     }
+    //     clearInterval(this.userTimeOut);
+    // }
 
     // userTimeOutNotification(){
     //     this.userTimeOutNotification = setInterval(() =>
@@ -65,6 +68,7 @@ export class App extends React.Component {
     render() {
         return (
             <div className="app">
+                <HeaderBar />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/lifts" component={LiftingPrepContainer} />

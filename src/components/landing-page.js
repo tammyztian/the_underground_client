@@ -6,11 +6,9 @@ import LoginForm from './login-form';
 import Header from './header';
 import OnBoarding from './on-boarding';
 
-export class LandingPage extends React.Component {
-    // If we are logged in redirect straight to the user's dashboard
-   
+export class LandingPage extends React.Component {   
     render (){
-        if (this.props.authToken) {
+        if (this.props.authToken !== null) {
             return <Redirect to="/lifts" />;
         }
     return (

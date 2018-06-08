@@ -1,3 +1,5 @@
+//for future implementation, will be formatted into db instead
+
 import React from 'react';
 import {connect} from 'react-redux';
 

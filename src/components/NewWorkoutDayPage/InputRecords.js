@@ -1,12 +1,13 @@
 import React from 'react';
-import '../styles/on-boarding.css';
-import WeightForm from'./lifting-experience';
+import '../../styles/on-boarding.css';
+import WeightForm from'./input-records';
 import { LiftingPrep } from './lifting-prep';
-import Header from './header';
+import Header from '../Utils/header';
 
-export function LiftingPrepContainer(props) {
+export function InputNewRecordsPage(props) {
    
     return (
+
         <div className="lifting-prep-container">
           <Header />
           <LiftingPrep />

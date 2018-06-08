@@ -2,12 +2,12 @@ import React from 'react';
 import Lifts from './lifts';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import '../styles/dashboard.css';
+import '../../styles/dashboard.css';
 
-import Header from './header';
-import SquatDay1 from '../IronSummerProgram/week1Squat';
-import BenchDay1 from '../IronSummerProgram/week1Bench';
-import DeadliftDay1 from '../IronSummerProgram/week1Deadlift';
+import Header from '../Utils/header';
+import SquatDay1 from './IronSummerProgram/week1Squat';
+import BenchDay1 from './IronSummerProgram/week1Bench';
+import DeadliftDay1 from './IronSummerProgram/week1Deadlift';
 
 class Dashboard extends React.Component {
    

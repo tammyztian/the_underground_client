@@ -3,13 +3,10 @@ import {connect} from 'react-redux';
 import{Field, reduxForm, focus} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 
-import Input from './input';
-import Dashboard from './Dashboard';
+import Input from '../Utils/input';
+import {login} from '../../actions/auth';
 
-import {login} from '../actions/auth';
-import WeightForm from './lifting-experience';
-
-import '../styles/form.css';
+import '../../styles/form.css';
 
 export class LoginForm extends React.Component {
 
@@ -28,8 +25,11 @@ export class LoginForm extends React.Component {
       );
     }
 
+
     if (this.props.success) 
       return <Redirect to="/lifts"/>
+
+    
 
     return (
         <form 
@@ -65,7 +65,6 @@ export class LoginForm extends React.Component {
 const mapStateToProps = state => ({
   authToken: state.auth.authToken, 
   user: state.auth.curretUser,
-
   loading: state.auth.loading,
   error: state.auth.error,
   success: state.auth.success

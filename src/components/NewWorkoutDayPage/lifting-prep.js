@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/lifting-prep.css';
+import '../../styles/lifting-prep.css';
 
 
 export function LiftingPrep(props) {

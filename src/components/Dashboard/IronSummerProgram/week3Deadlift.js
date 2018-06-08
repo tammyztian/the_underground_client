@@ -1,8 +1,10 @@
+//for future implementation, will be formatted into db instead
+
 import React from 'react';
 import {connect} from 'react-redux';
 
 
-class DeadliftDay2 extends React.Component {
+class DeadliftDay3 extends React.Component {
   
 
  
@@ -48,4 +50,4 @@ const mapStateToProps = state => ({
   loading: state.lifts.loading
 })
 
-export default connect(mapStateToProps)(DeadliftDay2)
+export default connect(mapStateToProps)(DeadliftDay3)

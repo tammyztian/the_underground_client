@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearAuth} from '../actions/auth';
-import {clearAuthToken} from '../local-storage';
-import '../styles/logout.css'
+import {clearAuth} from '../../actions/auth';
+import {viewFormFalse} from '../../actions/viewform';
+import {clearAuthToken} from '../../local-storage';
+
+
+import '../../styles/logout.css'
 
 export class HeaderBar extends React.Component {
     logOut() {
@@ -31,7 +34,8 @@ export class HeaderBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser
+    loggedIn: state.auth.currentUser,
+    viewForm: state.viewForm.viewForm
 });
 
 export default connect(mapStateToProps)(HeaderBar);

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/on-boarding.css';
+import '../../styles/on-boarding.css';
 
 
 export function BoardingContent(props) {

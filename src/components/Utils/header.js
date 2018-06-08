@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/header.css';
-import logo from '../styles/tug_logo.png';
+import '../../styles/header.css';
+import logo from '../../styles/tug_logo.png';
 
 export default function Header(props) {
     

@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterForm from './register-form';
-import Header from './header';
+import Header from '../Utils/header';
 import { BoardingContent } from './boarding-content';
 
 

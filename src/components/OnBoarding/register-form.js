@@ -2,15 +2,13 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 
-import {registerUser} from '../actions/user';
-import {createProgramRecord} from '../actions/program';
-import {viewFormFalse} from '../actions/viewform';
+import {registerUser} from '../../actions/user';
+import {createProgramRecord} from '../../actions/program';
+import {viewFormFalse} from '../../actions/viewform';
+import { login } from '../../actions/auth';
 
-import Input from './input';
-import {LoginPage} from './login-page';
-import '../styles/form.css';
-import { login } from '../actions/auth';
-import { LiftingPrepContainer } from './lifting-prep-container';
+import Input from '../Utils/input';
+import '../../styles/form.css';
 
 
 export class RegistrationForm extends React.Component{

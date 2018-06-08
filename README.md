@@ -13,13 +13,13 @@ User can create a user.
 User can log lifts for each day.
 User can receive workouts based on their daily lifts.
 
-![The Landing page prompts user to register](http://i68.tinypic.com/rml8v5.png)"Landing Page to register")
+![The Landing page prompts user to register](http://i64.tinypic.com/nd1rbr.png)"Landing Page to register")
 
- ![This form collects the users max lift for the day](http://i65.tinypic.com/qx7uqt.png)
+ ![This form collects the users max lift for the day](http://i67.tinypic.com/539x0k.png)
 "The lifting record form collects base number to calculate workout from"
 
 
-![This page displays the workout for the day](http://i64.tinypic.com/2j3gmf5.png)
+![This page displays the workout for the day](http://i64.tinypic.com/1055yqx.png)
 "This page displays the workout for the day"
 
 

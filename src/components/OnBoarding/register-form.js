@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 
 import {registerUser} from '../../actions/user';
 import {createProgramRecord} from '../../actions/program';
-import {viewFormFalse} from '../../actions/viewform';
 import { login } from '../../actions/auth';
 
 import Input from '../Utils/input';

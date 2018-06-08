@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import{Field, reduxForm, focus} from 'redux-form';
+import{Field, reduxForm} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 
 import Input from '../Utils/input';

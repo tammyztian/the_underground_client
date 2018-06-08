@@ -45,7 +45,6 @@ export const putProgramError = error => ({
 export const POST_PROGRAM_REQUEST = 'POST_PROGRAM_REQUEST'
 export const postProgramRequest = () => ({
   type: POST_PROGRAM_REQUEST,
-  //day: program.day,
 
 })
 
@@ -73,7 +72,7 @@ export const getProgram = () =>(dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     },
   })
-    // .then(res => normalizeResponseErrors(res))
+    .then(res => normalizeResponseErrors(res))
     .then(res => {
       console.log(`number in db ${res}`)
       return res.json()

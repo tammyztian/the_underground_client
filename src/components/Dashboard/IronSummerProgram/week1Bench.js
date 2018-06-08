@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
 
 import {updateProgramRecord} from '../../../actions/program';
 import {getProgram} from '../../../actions/program';
@@ -24,21 +23,18 @@ class BenchDay1 extends React.Component {
      return <p> Loading </p>
    }
 
-  //  if (this.props.viewCompleted){
-  //   return <Redirect to="/lifts" />
-  // }
-
+  
     let rpeHeavy = this.props.bench * .94;
-    let rpeSquat_3x5 = this.props.bench * .73;
-    let rpe6Squat_3x6 = this.props.bench * .67;
+    let rpe_3x5 = this.props.bench * .73;
+    let rpe6_3x6 = this.props.bench * .67;
 
     //move to an object in server
 
     const requiredWorkout = 
             <ul className="required-list"> 
                 <li> Competition Paused Bench Press work up to heavy 1x3 @ {rpeHeavy.toFixed()}</li>
-                <li> Specialty Bench Bar for 4x6 @ {rpeSquat_3x5.toFixed()} </li>
-                <li> Variety Bench Press 4x4 @ {rpeSquat_3x5.toFixed()}</li>
+                <li> Specialty Bench Bar for 4x6 @ {rpe_3x5.toFixed()} </li>
+                <li> Variety Bench Press 4x4 @ {rpe6_3x6.toFixed()}</li>
                 <li> Your choice of abs workout </li>
             </ul>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
 
 import {updateProgramRecord} from '../../../actions/program';
 import {getProgram} from '../../../actions/program';
@@ -31,13 +30,13 @@ class SquatDay1 extends React.Component {
   // }
     let rpeHeavy = this.props.squat * .94;
     let rpeSquat_3x5 = this.props.squat * .73;
-    let rpe6Squat_3x6 = this.props.squat * .67;
+    let rpe6_3x6 = this.props.squat * .67;
 
     const requiredWorkout = 
       <ul className="required-list"> 
         <li> Competition Paused Squat for 1x3 @ {rpeHeavy.toFixed()}</li>
         <li> Specialty Squat Bar for 3x5 @ {rpeSquat_3x5.toFixed()} </li>
-        <li> Box Squat for 3x5 @ {rpeSquat_3x5.toFixed()}</li>
+        <li> Box Squat for 3x5 @ {rpe6_3x6.toFixed()}</li>
         <li> Your choice of abs workout </li>
                
       </ul>

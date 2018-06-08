@@ -39,6 +39,7 @@ Users new to lifting are expected to be following along with recommendations by 
 
 ## Code style
 Standard/Thinkful-style
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Tech/framework used
 
@@ -49,10 +50,7 @@ Standard/Thinkful-style
 - [Chai](http://www.chaijs.com/)
 - [Enzyme](https://airbnb.io/enzyme/docs/api/)
 - [Travis](https://travis-ci.org)
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
  
-
 ## Code Example
 
 API

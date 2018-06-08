@@ -25,7 +25,7 @@ input:focus{
 	outline:none;
 }
 
-.button {
+/* .button {
 	color: #fff;
 	font-family: 'Roboto Mono', monospace;
 	background-color: transparent;
@@ -39,7 +39,7 @@ input:focus{
 	color:rgb(202, 112, 28);
 	border: none;
 }
-
+ */
 
 
 /* .login-form {

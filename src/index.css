@@ -51,3 +51,19 @@ ol, ul {
   display: block;
 }
 
+.button {
+	color: #fff;
+	font-family: 'Roboto Mono', monospace;
+	background-color: transparent;
+	border: 1px;
+	border-color: white;
+	margin-bottom: 5px;
+	border-radius: 4px;
+
+}
+.button:hover {
+	color:rgb(202, 112, 28);
+	border: none;
+}
+
+

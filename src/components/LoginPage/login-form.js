@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 
 import Input from '../Utils/input';
 import {login} from '../../actions/auth';
-import {required, nonEmpty} from '../Utlis/validators';
+import {required, nonEmpty} from '../Utils/validators';
 
 
 import '../../styles/form.css';

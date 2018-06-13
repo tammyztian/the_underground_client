@@ -47,9 +47,9 @@ class DeadliftDay1 extends React.Component {
       </ul>
   const optionalWorkout = 
       <ul className="extra-list"> 
-        <li> Dumbell Rows for 3x6 @  your choice of heavy weights</li>
+        <li> Dumbbell Rows for 3x6 @  your choice of heavy weights</li>
         <li> Barbell curls for 4x8 @ your choice of heavy weights</li>
-        <li> Dumbell Hammer curls 3x8 @ your choice of heavvy weights </li>
+        <li> Dumbbell Hammer curls 3x8 @ your choice of heavvy weights </li>
       </ul>
   
       return (

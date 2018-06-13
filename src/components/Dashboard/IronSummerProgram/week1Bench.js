@@ -40,7 +40,7 @@ class BenchDay1 extends React.Component {
 
     const extraWorkout = 
       <ul className="extra-list">
-          <li> Dumbell Lunges 3x8 @ your choice of light weights </li>
+          <li> Dumbbell Lunges 3x8 @ your choice of light weights </li>
           <li> Tricept Pulldowns 3x8 @ Moderate </li>
           <li> Dips 4x8 </li>
       </ul>

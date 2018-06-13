@@ -42,7 +42,7 @@ class SquatDay1 extends React.Component {
       </ul>
   const optionalWorkout = 
     <ul className="extra-list"> 
-        <li> Dumbell Lunges for 3x8 @  your choice of Light weights</li>
+        <li> Dumbbell Lunges for 3x8 @  your choice of Light weights</li>
         <li> Front Squat for 3x6 @ </li>
         <li> GHD Ham Raises 3x5 </li>
       </ul>

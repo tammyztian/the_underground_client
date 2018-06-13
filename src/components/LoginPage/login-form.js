@@ -5,6 +5,8 @@ import {Redirect} from 'react-router-dom';
 
 import Input from '../Utils/input';
 import {login} from '../../actions/auth';
+import {required, nonEmpty} from '../Utlis/validators';
+
 
 import '../../styles/form.css';
 
@@ -17,14 +19,13 @@ export class LoginForm extends React.Component {
 
   render() {
     let error;
-    if (!this.props.error === null){
-      error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error.message}
-        </div>
-      );
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
     }
-
 
     if (this.props.success) 
       return <Redirect to="/lifts"/>
@@ -43,6 +44,8 @@ export class LoginForm extends React.Component {
             type="text"
             name="username"
             id="input"
+            validate={[required, nonEmpty]}
+
           />
           <label htmlFor="password" className="form-input"> Password </label>
           <Field
@@ -50,6 +53,8 @@ export class LoginForm extends React.Component {
             type="password"
             name="password"
             id="input"
+            validate={[required, nonEmpty]}
+
             
           />
           <button className="button" disabled={this.props.pristine || this.props.submitting}>
@@ -76,6 +81,5 @@ LoginForm = connect(
 
 export default reduxForm({
   form: 'loginForm',
-
-
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm)

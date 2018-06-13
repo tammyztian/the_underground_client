@@ -6,11 +6,12 @@ import {registerUser} from '../../actions/user';
 import {createProgramRecord} from '../../actions/program';
 import { login } from '../../actions/auth';
 
+import '../../styles/form.css';
+
 import Input from '../Utils/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../Utils/validators';
 const passwordLength = length({min: 5, max: 72});
 
-import '../../styles/form.css';
 
 
 export class RegistrationForm extends React.Component{

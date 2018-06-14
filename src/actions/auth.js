@@ -1,9 +1,9 @@
-import {API_BASE_URL} from '../config';
 import jwtDecode from 'jwt-decode';
-
 import {SubmissionError} from 'redux-form';
-import {normalizeResponseErrors} from './utils';
 
+
+import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
 import {clearAuthToken, saveAuthToken } from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
@@ -57,14 +57,14 @@ export const login = (username, password) => dispatch => {
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
-            .catch(err => {
+             .catch(err => {
                 const {code} = err;
                 const message =
                     code === 401
                         ? 'Incorrect username or password'
                         : 'Unable to login, please try again';
                 dispatch(authError(err));
-        
+
                 return Promise.reject(
                     new SubmissionError({
                         _error: message

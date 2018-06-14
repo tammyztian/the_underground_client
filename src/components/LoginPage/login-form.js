@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import{Field, reduxForm, focus} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 
@@ -10,10 +9,11 @@ import {required, nonEmpty} from '../Utils/validators';
 
 import '../../styles/form.css';
 
+
 export class LoginForm extends React.Component {
 
   onSubmit(values){
-    this.props.dispatch(login(values.username, values.password))
+   return this.props.dispatch(login(values.username, values.password))
   }
 
 
@@ -34,7 +34,9 @@ export class LoginForm extends React.Component {
     return (
         <form 
           className="form"
-          onSubmit={this.props.handleSubmit(values =>this.onSubmit(values))}>
+          onSubmit={this.props.handleSubmit(values =>
+            this.onSubmit(values))
+          }>
 
           {error}
           <label htmlFor="username" className="form-input"> Username </label>

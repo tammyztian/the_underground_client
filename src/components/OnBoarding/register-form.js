@@ -15,16 +15,8 @@ const passwordLength = length({min: 5, max: 72});
 
 
 export class RegistrationForm extends React.Component{
-  constructor(props) {
-    super(props)
-    this.state = {
-      success: false,
-      error: null
-    }
-  }
-
-
-    onSubmit(values){
+  
+  onSubmit(values){
       const {username, password, firstName, lastName} = values;
       const user = {username, password, firstName, lastName};
   
@@ -33,21 +25,17 @@ export class RegistrationForm extends React.Component{
         return this.props.dispatch(login(values.username, values.password))
       })
       .then(() => {
-        this.props.dispatch(createProgramRecord())
+        return  this.props.dispatch(createProgramRecord())
       })
-      .then(this.setState({success: true}))
     }
 
-  
-  
-//automatically log in after registering
 
   
   render(){
 
   
 
-    if (this.state.success) {
+    if (this.props.submitSucceeded) {
       return <Redirect to="/lifts"/>
 
 
@@ -57,12 +45,6 @@ export class RegistrationForm extends React.Component{
           className="form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-
-           <label htmlFor={this.props.input.name}>
-                    {this.props.label}
-                    {error}
-                    {warning}
-                </label>
 
           <label htmlFor="firstName"> First name</label>
           <Field 

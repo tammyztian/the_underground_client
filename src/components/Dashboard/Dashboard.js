@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom';
 import '../../styles/dashboard.css';
 
 import Header from '../Utils/header';
+import HeaderBar from '../Utils/header-bar';
 import SquatDay1 from './IronSummerProgram/week1Squat';
 import BenchDay1 from './IronSummerProgram/week1Bench';
 import DeadliftDay1 from './IronSummerProgram/week1Deadlift';
@@ -17,12 +18,13 @@ class Dashboard extends React.Component {
         if (this.props.authToken === null) return <Redirect to="/" />;
 
         if (this.props.viewForm){
-            console.log('submit should redirect to lifts')
+            //console.log('submit should redirect to lifts')
             return <Redirect to="/lifts" />
           }
 
         if (this.props.day === 0) 
             return <div className="dashboard">
+            <HeaderBar />
             <Header />
              <h2>Today's Workout: Squat Day</h2>
                     <Lifts /> 
@@ -31,6 +33,7 @@ class Dashboard extends React.Component {
         
         if (this.props.day === 1) 
             return  <div className="dashboard">
+                <HeaderBar />
                 <Header />  
                 <h2>Today's Workout: Bench Day</h2> 
                 <Lifts /> 
@@ -39,6 +42,7 @@ class Dashboard extends React.Component {
 
         if (this.props.day === 2) 
             return <div className="dashboard">
+                <HeaderBar />
                 <Header />
                 <h2>Today's Workout: Deadlift Day</h2>
                 <Lifts /> 
@@ -47,6 +51,7 @@ class Dashboard extends React.Component {
 
         return (
             <div>
+                <HeaderBar />
                 <Header />
                 <Lifts />
                 

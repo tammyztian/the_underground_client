@@ -5,7 +5,7 @@ import {Route, withRouter} from 'react-router-dom';
 
 import {refreshAuthToken } from '../../actions/auth';
 
-///import HeaderBar from '../Utils/header-bar';
+// import HeaderBar from '../Utils/header-bar';
 //developing log-out button^^
 import LandingPage from '../LandingPage/landing-page';
 import Dashboard from '../Dashboard/Dashboard';

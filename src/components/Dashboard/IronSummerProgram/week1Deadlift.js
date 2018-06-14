@@ -17,7 +17,7 @@ class DeadliftDay1 extends React.Component {
     if (nextDay > 2){
       nextDay = 0;
     }
-    console.log(nextDay);
+    // console.log(nextDay);
     this.props.dispatch(updateProgramRecord(nextDay))
     this.props.dispatch(viewFormTrue());
    }

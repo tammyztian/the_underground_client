@@ -9,7 +9,7 @@ import { login } from '../../actions/auth';
 import '../../styles/form.css';
 
 import Input from '../Utils/input';
-import {required, nonEmpty, matches, length, isTrimmed} from '../Utils/validators';
+import {required, nonEmpty, length, isTrimmed} from '../Utils/validators';
 const passwordLength = length({min: 5, max: 72});
 
 

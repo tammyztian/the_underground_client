@@ -54,16 +54,9 @@ Standard/Thinkful-style
 - [Chai](http://www.chaijs.com/)
 - [Enzyme](https://airbnb.io/enzyme/docs/api/)
 - [Travis](https://travis-ci.org)
- 
-## Code Example
-
-API
-
-Logins
-
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 
 ## Credits
 This is dedicated to Andie Nguyen for making the metro Milwaukee community a little healthier, a lot more confident -- and the Thinkful Team for the support!
+
+An additional thanks to my classmate Tharaka for helping me figure out how to deploy environment variables.

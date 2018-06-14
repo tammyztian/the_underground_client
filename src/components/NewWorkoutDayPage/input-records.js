@@ -12,14 +12,12 @@ export class WeightForm extends React.Component{
 
   
     onSubmit(lifts){
-      console.log(lifts);
       this.props.dispatch(postLifts(lifts))
       this.props.dispatch(viewFormFalse());
   }
   
 
   render(){
-    console.log(this.props.day)
     if (!this.props.dispatch) return <h1>UNCONNECTED</h1>
     if (this.props.authToken === null) return <Redirect to="login" />
     if (!this.props.viewForm) return <Redirect to="/dashboard" />;

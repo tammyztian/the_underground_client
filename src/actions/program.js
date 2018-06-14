@@ -60,7 +60,7 @@ export const postProgramError = error => ({
   error
 })
 
-
+//Get program for the day
 export const getProgram = () =>(dispatch, getState) => {
   const authToken = getState().auth.authToken;
   let day;
@@ -73,40 +73,31 @@ export const getProgram = () =>(dispatch, getState) => {
     },
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => {
-      console.log(`number in db ${res}`)
-      return res.json()
-    })
+    .then(res =>  res.json())
       .then (data => {
-        console.log(data);
-        day = data.day
-        console.log(`data.day is ${day} being sent to state`) 
+      day = data.day
       return (dispatch(getProgramSuccess(day)))
-    })
+      })
     .catch(err => {
-      const {code} = err;
-      const message =
-          code === 401
-              ? 'No data found under your username'
-              : 'Unable to get data, please try again';
+      const {reason, message, location} = err;
       dispatch(getProgramError(err));
-      // Could not authenticate, so return a SubmissionError for Redux
-      // Form
-      return Promise.reject(
-          new SubmissionError({
-              _error: message
-          })
-      );
-  })
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+            new SubmissionError({
+                [location]: message
+            })
+        );
+      }
+    });
 }
 
 
 
+
+//move to next day after submitted 
 export const updateProgramRecord = day => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(putProgramRequest())
-  console.log('PUT request to post PROGRAM sent!');
-  console.log(day)
   const bodyRequest = {day}
   return fetch(`${API_BASE_URL}/program`, {
     method: 'PUT',
@@ -115,39 +106,28 @@ export const updateProgramRecord = day => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     },
     body:JSON.stringify(bodyRequest)
-
-
   })
-    .then(res => {
-     return res.json()
-    }) 
-
-    .then(data => {
-      console.log(data);
-      console.log(`this is input into program success ${data.day}`)
-      return dispatch(putProgramSuccess(data.day))
-    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(data => dispatch(putProgramSuccess(data.day)))
     .catch(err => {
-      const {code} = err;
-      const message =
-          code === 400
-              ? 'Please enter in a number'
-              : 'Unable to send information, please try again';
-      dispatch(putProgramError(err));
-      // Could not authenticate, so return a SubmissionError for Redux
-      // Form
-      return Promise.reject(
-          new SubmissionError({
-              _error: message
-          })
-      );
+      const {reason, message, location} = err;
+      dispatch(getProgramError(err));
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+            new SubmissionError({
+                [location]: message
+            })
+        );
+      }
     })
 }
 
+//POST first record for program day
 export const createProgramRecord = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(postProgramRequest())
-  console.log('POST request to post PROGRAM sent!');
+  //console.log('POST request to post PROGRAM sent!');
   const bodyRequest = {day: 0}
   return fetch(`${API_BASE_URL}/program`, {
     method: 'POST',
@@ -159,39 +139,20 @@ export const createProgramRecord = () => (dispatch, getState) => {
 
 
   })
-    .then(res => {
-     return res.json()
-    }) 
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(data => dispatch(putProgramSuccess(data.day)))
+      // console.log(data);
+      // console.log(`this is input into program success ${data}`)
+      .catch(err => {
+        const {reason, message, location} = err;
+        if (reason === 'ValidationError') {
+            return Promise.reject(
+                new SubmissionError({
+                    [location]: message
+                })
+            );
+        }
+    })
 
-    .then(data => {
-      console.log(data);
-      console.log(`this is input into program success ${data}`)
-      return dispatch(putProgramSuccess(data.day))
-    })
-    .catch(err => {
-      const {code} = err;
-      const message =
-          code === 400
-              ? 'Please enter in a number'
-              : 'Unable to send information, please try again';
-      dispatch(putProgramError(err));
-      // Could not authenticate, so return a SubmissionError for Redux
-      // Form
-      return Promise.reject(
-          new SubmissionError({
-              _error: message
-          })
-      );
-    })
-      // .then(()=>
-      //   return dispatch(getLifts(lifts));)
-    //.catch(err => dispatch(putProgramError(err)))
-      // const {reason, message, location} = err;
-      // if (reason === 'ValidationError'){
-      //   return Promise.reject(
-      //     new SubmissionError({
-      //       [location]:message
-      //     })
-      //   );
-      // }
 }

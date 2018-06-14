@@ -18,7 +18,11 @@ export class LoginForm extends React.Component {
 
 
   render() {
-    let error;
+
+    if (this.props.submitSucceeded) 
+      return <Redirect to="/lifts"/>
+
+      let error;
     if (this.props.error) {
         error = (
             <div className="form-error" aria-live="polite">
@@ -26,11 +30,6 @@ export class LoginForm extends React.Component {
             </div>
         );
     }
-
-    if (this.props.success) 
-      return <Redirect to="/lifts"/>
-
-    
 
     return (
         <form 
@@ -67,17 +66,17 @@ export class LoginForm extends React.Component {
 
 
 
-const mapStateToProps = state => ({
-  authToken: state.auth.authToken, 
-  user: state.auth.curretUser,
-  loading: state.auth.loading,
-  error: state.auth.error,
-  success: state.auth.success
-})
+// const mapStateToProps = state => ({
+//   authToken: state.auth.authToken, 
+//   user: state.auth.curretUser,
+//   loading: state.auth.loading,
+//   error: state.auth.error,
+//   success: state.auth.success
+// })
 
-LoginForm = connect(
-  mapStateToProps
-)(LoginForm)
+// LoginForm = connect(
+//   mapStateToProps
+// )(LoginForm)
 
 export default reduxForm({
   form: 'loginForm',

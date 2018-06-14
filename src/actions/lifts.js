@@ -1,5 +1,7 @@
 import {API_BASE_URL} from '../config';
-//import {normalizeResponseErrors} from './utils';
+import {normalizeResponseErrors} from './utils';
+import {SubmissionError} from 'redux-form';
+
 
 export const GET_LIFTS_REQUEST = 'GET_LIFTS_REQUEST'
 export const getLiftsRequest = () => ({
@@ -59,22 +61,17 @@ export const postLifts = lifts => (dispatch, getState) => {
     },
     body:JSON.stringify(lifts)
   })
-    .then(res => {
-     return res.json()
-    }) 
-    .then(data => {
-      console.log(data)
-      return dispatch(postLiftsSuccess(data))
-    })
-      // .then(()=>
-      //   return dispatch(getLifts(lifts));)
-    .catch(err => dispatch(postLiftsError(err)))
-      // const {reason, message, location} = err;
-      // if (reason === 'ValidationError'){
-      //   return Promise.reject(
-      //     new SubmissionError({
-      //       [location]:message
-      //     })
-      //   );
-      // }
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json()) 
+    .then(data => dispatch(postLiftsSuccess(data)))
+    .catch(err => {
+      const {reason, message, location} = err;
+      if (reason === 'ValidationError') {
+          return Promise.reject(
+              new SubmissionError({
+                  [location]: message
+              })
+          );
+      }
+    });
 }
